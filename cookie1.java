@@ -13,7 +13,7 @@ public class cookie1 extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String usernameOrEmail = "";
 
-        // Retrieve the cookie value if it exists
+        
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -24,7 +24,7 @@ public class cookie1 extends HttpServlet {
             }
         }
 
-        // Generate the HTML response
+        
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<!DOCTYPE html>");
@@ -44,12 +44,12 @@ public class cookie1 extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userInput = request.getParameter("userInput");
 
-        // Store the input in a cookie
+        
         Cookie cookie = new Cookie("usernameOrEmail", userInput);
         cookie.setMaxAge(60 * 60 * 24); // 1 day
         response.addCookie(cookie);
 
-        // Redirect back to the form page (GET request)
+        
         response.sendRedirect("cook.jsp");
     }
 }
